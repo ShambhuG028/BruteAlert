@@ -1,340 +1,478 @@
-<!DOCTYPE html>
-<html lang="en">
+* {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BruteAlert</title>
-    <link rel="stylesheet" href="finalhome.css">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="index.css" rel="stylesheet" />
-</head>
+html {
+    scroll-behavior: smooth;
+}
 
-<body>
-    <header>
-        <div id="navbar1">
-            <img src="name.jpg" id="name" />
-        </div>
 
-        <div id="navbar2">
-            <a href="index.html" class="active">Home</a>
-            <a href="Brute_alert.html" class="navtags">Brute-alert</a>
-            <a href="security.html" class="navtags">Security</a>
-            <a href="aboutUs.html" class="navtags">About us</a>
-        </div>
-    </header>
+#navbar1 {
+    background-color: #284BFF;
+    height: 6.4%;
+    width: 50%;
+    display: flex;
+    position: absolute;
+    top: 0;
+    padding: 0.5%;
 
-    <content>
-        <content>
-            <div class="section1">
-                <div class="back-video">
-                <video autoplay loop muted plays-inline>
-                    <source src="video 2.mp4" type="video/mp4">
-                </video>
-            </div>
-                <div class="part1">
-                    <br>
-                    <p id="intro">
-                        Why BruteAlert
-                    </p>
-                    </br>
-    
-                    <p id="para">
-                        BruteAlert aims to be the leading online platform for assessing the
-                        security of passwords through advanced brute-force analysis. <br />
-    
-                    </p>
-                    <button id="test_button"> <a  href="#target" style="text-decoration: none;">Password Test > </a></button>
-                </div>
 
-            </div>
-    
-    
-            <div class="section2" id="target">
-                <div class="pass_box">
-                    <h2>
-                        Test Your Password
-                    </h2>
-                    <div class="pass_check_box">
-                        <div class="pass_input">
-    
-                            <!DOCTYPE html>
-                            <html lang="en">
-                            <head>
-                                <meta charset="UTF-8">
-                                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-                                <title>Password Strength Evaluation</title>
-                                <style>
-                                    #result-section {
-                                        margin-top: 10px;
-                                        font-weight: bold;
-                                    }
-                                    #strength {
-                                        margin-top: 10px;
-                                        font-weight: bold;
-                                    }
-                                </style>
-                            </head>
-                            <body>
-                            
-                                <form id="passwordForm">
-                                    <input type="text" name="check_strength" id="pass" placeholder="Evaluate your password" oninput="evaluatePassword()">
-                                </form>
-                                
-    <script>
-        function evaluatePassword() {
-            var password = document.getElementById('pass').value;
-            var resultSection = document.getElementById('result-section');
-            var strengthSection = document.getElementById('strength');
+}
 
-            if (password.length === 0) {
-                resultSection.innerHTML = '';
-                strengthSection.innerHTML = '';
-                return;
-            }
+#name {
+    position: relative;
+    top: -0.3;
+    left: 1%;
+}
 
-            var result = calculatePasswordStrength(password);
-            resultSection.innerHTML = result.text;
-            strengthSection.innerHTML = result.strength;
-        }
+#navbar2 {
+    background-color: #284BFF;
+    height: 6.4%;
+    width: 50%;
+    display: flex;
+    justify-content: space-evenly;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 25px;
+    padding: 0.5%;
 
-        function calculatePasswordStrength(password) {
-            var charSetSize = getCharacterSetSize(password);
-            var passwordLength = password.length;
+}
 
-            // Entropy calculation
-            var entropy = passwordLength * Math.log2(charSetSize);
+#navbar2 a {
+    font-size: 70%;
+    margin-top: 0.7%;
+    height: 40%;
+}
 
-            // Time to crack calculation using entropy
-            var attemptsPerSec = 1e10; // 10 billion attempts per second, a more realistic value considering modern GPUs
-            var timeToCrack = Math.pow(2, entropy) / attemptsPerSec;
+.navtags {
+    position: relative;
+    top: 21%;
+    text-decoration: none;
+    color: #ffffff;
+    text-align: center;
 
-            // Ensure timeToCrack is not less than zero
-            timeToCrack = Math.max(timeToCrack, 0);
+}
 
-            // Convert time to human-readable format
-            var timeString = convertTimeToHumanReadable(timeToCrack);
+.active {
+    position: relative;
+    top: 0;
+    text-decoration: none;
+    color: #ffffff;
+    height: 40%;
+    padding-top: 1.7%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1.4%;
+    margin-left: -2%;
+    margin-right: -2%;
+    border-radius: 12px;
+    color: #b8bbbf;
+}
 
-            // Determine strength
-            var strength = determineStrength(timeToCrack);
+.navtags:hover {
+    position: relative;
+    top: 0;
+    text-decoration: none;
+    color: #ffffff;
+    height: 40%;
+    padding-top: 1.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 1.4%;
+    margin-left: -2%;
+    margin-right: -2%;
+    border-radius: 12px;
+    color: #b8bbbf;
+}
 
-            return { text: timeString, strength: strength };
-        }
+.section1 {
+    height: 80%;
+    width: 100%;
+    position: absolute;
+    top: 8.2999%;
+    display: flex;
+}
 
-        function convertTimeToHumanReadable(seconds) {
-            if (seconds < 1) {
-                return "0 seconds";
-            }
+#intro {
+    color: white;
+    font-size: 370%;
+    position: relative;
+    top: 13%;
+    left: 3.2%;
+    font-style: siara;
+    font-weight: bold;
+    width: 35%;
+}
 
-            var units = [
-                { unit: 'years', value: 31536000 },
-                { unit: 'months', value: 2592000 },
-                { unit: 'weeks', value: 604800 },
-                { unit: 'days', value: 86400 },
-                { unit: 'hours', value: 3600 },
-                { unit: 'minutes', value: 60 },
-                { unit: 'seconds', value: 1 }
-            ];
+#para {
+    color: white;
+    position: relative;
+    top: 16%;
+    left: 3.2%;
+    font-size: 120%;
+    width: 96.5%;
+    line-height: 150%
+}
 
-            var timeString = '';
-            for (var i = 0; i < units.length; i++) {
-                var unitValue = Math.floor(seconds / units[i].value);
-                if (unitValue > 0) {
-                    timeString += `${unitValue} ${units[i].unit} `;
-                    seconds %= units[i].value;
-                }
-            }
-            return timeString.trim();
-        }
+#test_button {
+    color: #284bff;
+    font-size: 28px;
+    position: relative;
+    top: 23%;
+    left: 3.2%;
+    margin-top: 2%;
+    padding: 15px;
+    border-radius: 30px;
+    background-color: white;
+   
 
-        function determineStrength(timeToCrack) {
-            var threeHours = 3 * 3600;
-            var oneDay = 24 * 3600;
-            var oneWeek = 7 * 24 * 3600;
-            var oneMonth = 30 * 24 * 3600;
+}
+#test_button :hover{
+    color: #284bff;
 
-            if (timeToCrack < threeHours) {
-                return "Very Weak";
-            } else if (timeToCrack >= threeHours && timeToCrack < oneDay) {
-                return "Weak";
-            } else if (timeToCrack >= oneDay && timeToCrack < oneWeek) {
-                return "Moderate";
-            } else if (timeToCrack >= oneWeek && timeToCrack < oneMonth) {
-                return "Strong";
-            } else {
-                return "Strongest";
-            }
-        }
+    background-color: white;
+}
+.part1 {
+    color: white;
+}
 
-        function getCharacterSetSize(password) {
-            var charSetSize = 0;
-            var sets = [
-                { regex: /[a-z]/, size: 26 },
-                { regex: /[A-Z]/, size: 26 },
-                { regex: /[0-9]/, size: 10 },
-                { regex: /[!@#$%^&*()_\-+=?.,/|;:~`{}[\]<>]/, size: 32 },
-            ];
+.part2 {
+    display: flex;
+    background-color: #ffffff;
+    height: 90%;
+    width: 70%;
+    align-items: center;
+    margin-left: 3%;
 
-            for (var i = 0; i < sets.length; i++) {
-                if (sets[i].regex.test(password)) {
-                    charSetSize += sets[i].size;
-                }
-            }
+}
 
-            return charSetSize;
-        }
-    </script>
-                            
-                                
-                                
-                                
-                            
-                            </body>
-                            </html>
-                            
-                        </div>
-                        <div class="analysis">
-                            <div class="p1">
-                                <p>Your Password Strength   :</p>
-                                <div class="p_strength" id="strength"></div>
-                            </div>
-                            <div class="p2">
-                                <p>Estimated Time To Crack:</p>
-                                <div class="output" id="result-section"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-    
-            </div>
-    
-            <div class="section3">
-                <h1 class="title1">The Most Common Poor Password Practices</h1>
-    
-                <div class="sub_div">
-                    <div class="sub">
-                        <h3 class="points">1. Protection of Sensitive Information</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock1.png" alt="image" />
-                        </div>
-                    </div>
-                    <div class="sub">
-                        <h3 class="points">2. Prevention of Unauthorized Access</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock2.webp" alt="image" />
-                        </div>
-                    </div>
-    
-                    <div class="sub">
-                        <h3 class="points">3. Safeguarding Reputation and Trust</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock3.webp" alt="image" />
-                        </div>
-                    </div>
-                </div>
-    
-                <div class="sub_div">
-                    <div class="sub">
-                        <h3 class="points">4. Secure Digital Environment</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock4.webp" alt="image" />
-                        </div>
-                    </div>
-    
-    
-                    <div class="sub">
-                        <h3 class="points">5. Minimizing Financial Losses</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock5.webp" alt="image" />
-                        </div>
-                    </div>
-                    <div class="sub">
-                        <h3 class="points">6. Protecting Against Emerging Threats</h3>
-                        <div class="img">
-                            <img class="photo" src="iblock6.webp" alt="image" />
-                        </div>
-                    </div>
-                </div>
-    
-    
-            </div>
-    
-            <div class="section4">
-                <h1 class="title2">Small Guide For Password</h1>
-    
-                <div class="guide">
-                    <img src="strenght.jpg" alt="" class="strength">
-                    <img src="name.jpg" class="bottomimg">
-                </div>
-    
-            </div>
-    
-    
-            <div class="footer">
-    
-                <div class="footer1">
-                    <div class="footerblock">
-                        About BruteAlert
-                        <p class="footercontent">
-                            <br>
-                            BruteAlert is your go-to tool for checking the security of your passwords.
-                            Enter your password and see how long it would take for a brute-force attack to crack it.
-                        </p>
-                    </div>
-                    <div class="footerblock">
-                        Quick Links
-    
-                        <ul class="footercontent" style="position: relative; left: 10%;">
-                            <br>
-    
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="aboutUs.html">About us</a></li>
-                            <li><a href="#">Contact us</a></li>
-                            <li><a href="security.html">Security</a></li>
-                        </ul>
-    
-                    </div>
-    
-                    <div class="footerblock">
-                        Contact Us
-                        <ul class="footercontent" style="position: relative; left: 10%;">
-                            <br>
-                            <li href="#">Email: support@brutealert.com</li>
-                            <li href="#">Phone: +1-234-567-890</li>
-                            <li href="#">Address: 123 Cybersecurity Lane, Safe City, SC 12345</li>
-                            <li href="#">Services</li>
-    
-                        </ul>
-                    </div>
-    
-                    <div class="footerblock">
-                        Follow Us
-                        <div class="social_media">
-                            <div class="s_p">
-                                <a href="#" class="footercontent"><img src="fb.jpeg" alt="fb"></a>
-                            </div>
-                            <div class="s_p">
-                                <a href="#" class="footercontent"><img src="tr.png" alt="Twitter"></a>
-                            </div>
-                            <div class="s_p">
-                                <a href="#" class="footercontent"><img src="ln.jpg" alt="LinkedIn"></a>
-                            </div>
-                            <div class="s_p">
-                                <a href="#" class="footercontent"><img src="insta.png" alt="Instagram"></a>
-                            </div>
-                        </div>
-    
-                    </div>
-    
-                </div>
-                <div class="footer2">
-                    @BruteAlert
-                </div>
-            </div>
-    
-    
-        </content>
-    </content>
-</body>
+.part2 img {
+    height: 70%;
+    width: 90%;
+    align-items: center;
+}
 
-</html>
+.section1 {
+    height: 80%;
+    width: 100%;
+}
+
+.section1 video {
+    height: 100%;
+    width: 100%;
+}
+
+.section2 {
+    position: absolute;
+    top: 103.5%;
+    height: 100%;
+    width: 100%;
+
+}
+
+.pass_box {
+    width: 85%;
+    height: 85%;
+    background-color: #284BFF;
+    margin-left: 8%;
+    margin-right: 8%;
+    margin-top: 4%;
+    margin-bottom: 5%;
+    border-radius: 40px;
+
+}
+
+.pass_box h2 {
+    text-align: center;
+    font-size: 250%;
+    padding-top: 5%;
+    color: white;
+    display: block;
+}
+
+.pass_check_box {
+    height: 70%;
+    width: 90%;
+    background-color: white;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 4%;
+    border-radius: 55px;
+
+}
+
+.pass_input {
+    height: 20%;
+    width: 100%;
+    background-color: white;
+    display: absolute;
+    align-content: center;
+    border-radius: 30px;
+}
+
+.pass_input input[type="text"] {
+    margin-left: 25%;
+    width: 50%;
+    height: 60px;
+    border: #0007A5 1px solid;
+    border-radius: 10px;
+    font-size: 150%;
+    text-align: center;
+    margin-top: 5%;
+}
+
+.analysis {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    margin-top: 10%;
+    align-content: space-evenly;
+}
+
+.p1 {
+    height: 100%;
+    width: 70%;
+    margin-left: 5%;
+}
+
+.p1,
+.p2 p {
+    font-size: 30px;
+}
+
+.p2 {
+    height: 100%;
+    width: 70%;
+    margin-left: 5%;
+}
+
+.p_strength {
+    width: 70%;
+    height: 30%;
+    margin-top: 5%;
+    color: red;
+    font-size: 55%;
+}
+
+.output {
+    color: red;
+    width: 70%;
+    height: 30%;
+    margin-top: 5%;
+}
+
+.section3 {
+    position: absolute;
+    top: 205.5%;
+    height: 100%;
+    width: 100%;
+
+}
+
+.title1 {
+    position: relative;
+    top: 8%;
+    font-size: 48px;
+    left: 15%;
+    color: #4860DD;
+    font-weight: bold;
+}
+
+.sub_div {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 35px 0;
+    border-radius: 30px;
+    margin-top: 70px;
+
+}
+
+.title1 {
+    margin-top: -30px;
+    margin-bottom: 90px;
+    align-self: center;
+    width: 70%;
+    padding-top: 3%;
+    padding-bottom: 3%;
+}
+
+.sub {
+    background: white;
+    width: 25%;
+    padding: 20px;
+    border-radius: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.points {
+    margin: 20px;
+    text-align: center;
+}
+
+.img {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.img img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 250px;
+    object-fit: cover;
+}
+
+.section4 {
+    position: absolute;
+    top: 303.5%;
+    height: 135%;
+    width: 100%;
+
+}
+
+.title2 {
+    font-size: 48px;
+    color: #4860DD;
+    font-weight: bold;
+    position: relative;
+    top: 10%;
+    height: 10%;
+    left: 28%;
+    width: 70%;
+    padding-top: 3%;
+    align-content: center;
+
+}
+
+.guide {
+    position: relative;
+    height: 75%;
+    width: 42%;
+    top: 14%;
+    left: 31%;
+    background-color: #284BFF;
+    border-radius: 30px;
+}
+
+.strength {
+    height: 90%;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    width: 100%;
+}
+
+.bottomimg {
+    position: relative;
+    bottom: 0;
+    height: 8%;
+    justify-self: center;
+    margin-left: 2%;
+}
+
+.footer {
+    position: absolute;
+    top: 445%;
+    height: 60%;
+    width: 100%;
+    background-color: #284BFF;
+    margin-top: 10%;
+    line-height: 2;
+}
+
+.footer1 {
+    position: relative;
+    top: 0;
+    height: 20%;
+    width: 100%;
+    background-color: #284BFF;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.footerblock {
+    height: 68%;
+    width: 18%;
+    font-size: 25px;
+    font-weight: bold;
+    color: white;
+    margin-top: 3%;
+}
+
+.footer2 {
+    width: 100%;
+    height: 10%;
+    position: absolute;
+    bottom: -0;
+    border-top: 1px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+}
+
+.footercontent {
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: 400;
+    color: white;
+}
+
+.footercontent a {
+    text-decoration: underline;
+    color: white;
+}
+
+.social_media {
+
+    height: 70%;
+    width: 100%;
+    display: flex;
+}
+
+.s_p {
+    height: 20px;
+    width: 40px;
+    border-radius: 200px;
+    margin-right: 5%;
+    margin-top: 10%;
+
+}
+
+.s_p img {
+    height: 200%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 500px;
+}
+
+.back-video{
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+}
+@media (min-aspect-ratio: 16/9){
+    .back-video{
+        width: 100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    .back-video {
+        width: auto;
+        height: 100%;
+    }
+}
